@@ -83,12 +83,6 @@ utils/
 This reduces coupling and improves onboarding speed for new engineers.
 
 ---
-
-## 🚀 Running the Project
-
-Clone → Open in Android Studio → Sync Gradle → Run.
-
----
 ## 📱 Application Screens
 
 | 🚀 Launch | 🏠 Home |
@@ -97,7 +91,12 @@ Clone → Open in Android Studio → Sync Gradle → Run.
 
 | 🧩 Categories | 📜 Scroll Experience |
 |--------------|---------------------|
-| ![Categories Screen](docs/images/Category.png) | ![Scroll Screen](docs/images/Scroll.png) |
+| ![Categories Screen](docs/images/category.png) | ![Scroll Screen](docs/images/Scroll.png) |
+## 🚀 Running the Project
+
+Clone → Open in Android Studio → Sync Gradle → Run.
+
+---
 
 ## 🧩 Engineering Tradeoffs
 
