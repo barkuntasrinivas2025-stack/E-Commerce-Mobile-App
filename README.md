@@ -89,6 +89,15 @@ This reduces coupling and improves onboarding speed for new engineers.
 Clone → Open in Android Studio → Sync Gradle → Run.
 
 ---
+## 📱 Application Screens
+
+| 🚀 Launch | 🏠 Home |
+|----------|--------|
+| ![Launch Screen](docs/images/launch.png) | ![Home Screen](docs/images/home.png) |
+
+| 🧩 Categories | 📜 Scroll Experience |
+|--------------|---------------------|
+| ![Categories Screen](docs/images/categories.png) | ![Scroll Screen](docs/images/scroll.png) |
 
 ## 🧩 Engineering Tradeoffs
 
