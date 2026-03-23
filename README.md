@@ -110,19 +110,6 @@ Clone → Open in Android Studio → Sync Gradle → Run.
 * Modular feature delivery
 
 ---
-## 📱 App Preview
-
-### 🚀 Launch Experience
-![Launch](docs/images/launch.png)
-
-### 🏠 Home Product Listing
-![Home](docs/images/home.png)
-
-### 🧩 Category Filtering
-![Categories](docs/images/categories.png)
-
-### 📜 Smooth Scroll State
-![Scroll](docs/images/scroll.png)
 
 ## 👨‍💻 Developer Note
 
