@@ -93,11 +93,11 @@ Clone → Open in Android Studio → Sync Gradle → Run.
 
 | 🚀 Launch | 🏠 Home |
 |----------|--------|
-| ![Launch Screen](app/docs/images/launch.png) | ![Home Screen](app/docs/images/home.png) |
+| ![Launch Screen](docs/images/Launch.png) | ![Home Screen](docs/images/Home.png) |
 
 | 🧩 Categories | 📜 Scroll Experience |
 |--------------|---------------------|
-| ![Categories Screen](app/docs/images/categories.png) | ![Scroll Screen](app/docs/images/scroll.png) |
+| ![Categories Screen](docs/images/Category.png) | ![Scroll Screen](docs/images/Scroll.png) |
 
 ## 🧩 Engineering Tradeoffs
 
