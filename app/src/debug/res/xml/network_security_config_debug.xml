@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    DEBUG ONLY — allows user-installed CAs (Charles/mitmproxy) for dev testing.
+    This file is in the debug sourceSet and NEVER packaged in release builds.
+    If this file appears in a release APK, that is a misconfiguration.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

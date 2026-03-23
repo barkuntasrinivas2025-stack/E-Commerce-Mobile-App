@@ -1,0 +1,18 @@
+# ─── SECURITY: Never commit these ────────────────────────────────────────────
+# gradle.properties contains API keys, cert hashes, and CI secrets
+gradle.properties
+*.keystore
+*.jks
+google-services.json
+# If using local.properties for SDK path
+local.properties
+
+# ─── Generated ────────────────────────────────────────────────────────────────
+.gradle/
+build/
+app/build/
+*.iml
+.idea/
+.DS_Store
+*.apk
+*.aab

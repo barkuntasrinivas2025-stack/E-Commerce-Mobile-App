@@ -1,0 +1,18 @@
+# =============================================================
+# LOCAL PROPERTIES TEMPLATE
+# Copy this to local.properties and fill in real values.
+# NEVER commit local.properties to version control.
+# Add local.properties to .gitignore immediately.
+# =============================================================
+
+sdk.dir=/path/to/your/android/sdk
+
+# API Configuration (injected as BuildConfig fields)
+API_BASE_URL=https://api.confidencecommerce.com/v1/
+PRICE_COMPARISON_API_KEY=replace_with_real_key
+ANALYTICS_WRITE_KEY=replace_with_real_key
+
+# Certificate Pinning (SHA-256 of server certificate public key)
+# Run: openssl s_client -connect api.confidencecommerce.com:443 | openssl x509 -pubkey -noout | openssl pkey -pubin -outform der | openssl dgst -sha256 -binary | base64
+CERT_PIN_PRIMARY=replace_with_real_sha256_pin
+CERT_PIN_BACKUP=replace_with_real_sha256_pin_backup

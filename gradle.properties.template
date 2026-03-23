@@ -1,0 +1,14 @@
+# Copy this to gradle.properties and fill in your values.
+# NEVER commit gradle.properties to version control.
+org.gradle.jvmargs=-Xmx4096m -XX:+UseParallelGC
+org.gradle.parallel=true
+android.useAndroidX=true
+kotlin.code.style=official
+android.enableJetifier=false
+
+API_BASE_URL=https://api.confidencecommerce.dev/v1/
+API_KEY_PLACEHOLDER=your_dev_api_key_here
+PRICE_COMPARE_BASE_URL=https://pricecompare.confidencecommerce.dev/v1/
+CRASHLYTICS_ENABLED=false
+CERT_PIN_LEAF=your_cert_hash_here
+CERT_PIN_INTERMEDIATE=your_backup_cert_hash_here

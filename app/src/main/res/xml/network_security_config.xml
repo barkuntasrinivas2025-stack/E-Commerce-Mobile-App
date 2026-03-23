@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    network_security_config.xml — PRODUCTION BUILD
+    ═══════════════════════════════════════════════════════════════════════════
+    OWASP M3: Insecure Communication — Hardened TLS + Certificate Pinning
+
+    ACTIVATION STATUS: Pins are parameterized via BuildConfig. Swap
+    REPLACE_WITH_REAL_* placeholders in gradle.properties with real hashes
+    (see instructions below) to activate pinning.
+
+    ── HOW TO GENERATE PINS ──
+    Primary leaf pin:
+      openssl s_client -connect api.confidencecommerce.dev:443 </dev/null 2>/dev/null \
+        | openssl x509 -pubkey -noout \
+        | openssl pkey -pubin -outform DER \
+        | openssl dgst -sha256 -binary | base64
+
+    Intermediate CA pin (backup — REQUIRED to prevent bricking on cert rotation):
+      openssl s_client -connect api.confidencecommerce.dev:443 -showcerts </dev/null 2>/dev/null \
+        | awk '/BEGIN CERTIFICATE/,/END CERTIFICATE/' \
+        | awk 'NR>1 && /BEGIN CERTIFICATE/{found=1} found' \
+        | openssl x509 -pubkey -noout \
+        | openssl pkey -pubin -outform DER \
+        | openssl dgst -sha256 -binary | base64
+
+    ── TESTING CHECKLIST ──
+    □ Test with correct cert    → Request succeeds
+    □ Test with Charles proxy   → SSLPeerUnverifiedException (expected)
+    □ Test cert rotation flow   → Backup pin allows traffic, rotate primary
+    □ Verify pin expiry date    → Set 18 months from cert issue date
+    □ Monitor Crashlytics       → "Certificate pinning failure" alert
+
+    ── ROTATION RUNBOOK ──
+    T-30 days: Add new cert pin alongside existing (2 active pins)
+    T-0 days:  Deploy cert rotation
+    T+7 days:  Remove old pin after confirming rollout success
+    ═══════════════════════════════════════════════════════════════════════════
+-->
+<network-security-config>
+
+    <!-- ── Global: Block ALL cleartext HTTP across all domains ────────────── -->
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <!-- Production: trust ONLY system CAs, not user-installed CAs -->
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+
+    <!-- ── Price Comparison API — Certificate Pinning ─────────────────────── -->
+    <!--
+    ACTIVATE: Replace REPLACE_WITH_REAL_* with actual pin hashes.
+    Expiry: 18 months from initial deployment. Update before expiry or app breaks.
+
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">api.confidencecommerce.dev</domain>
+        <domain includeSubdomains="true">pricecompare.confidencecommerce.dev</domain>
+        <pin-set expiration="2027-09-22">
+            <pin digest="SHA-256">REPLACE_WITH_REAL_LEAF_PIN_BASE64=</pin>
+            <pin digest="SHA-256">REPLACE_WITH_REAL_INTERMEDIATE_PIN_BASE64=</pin>
+            <pin digest="SHA-256">REPLACE_WITH_BACKUP_PIN_FOR_ROTATION=</pin>
+        </pin-set>
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </domain-config>
+    -->
+
+    <!-- ── Firebase / Google Services — pinned to Google's root CA ────────── -->
+    <!--
+    Google rotates certs frequently via their CDN.
+    Use trust-anchor pinning to Google Root CA G4 instead of leaf pinning.
+
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">firebaseinstallations.googleapis.com</domain>
+        <domain includeSubdomains="true">firebasedynamiclinks.googleapis.com</domain>
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </domain-config>
+    -->
+
+</network-security-config>

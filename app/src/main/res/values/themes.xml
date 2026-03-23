@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Uses the Android platform theme — always available, no library needed.
+        Compose handles all visual theming in Kotlin (ConfidenceCommerceTheme).
+        This XML theme only controls the window before the first Compose frame.
+    -->
+    <style name="Theme.ConfidenceCommerce" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
+</resources>
